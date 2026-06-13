@@ -1,5 +1,6 @@
 package shuuriye.demovalidationca234.Controller;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import shuuriye.demovalidationca234.DTO.EmployeeResponse;
 import shuuriye.demovalidationca234.DTO.createRequestDto;
@@ -8,7 +9,7 @@ import shuuriye.demovalidationca234.Service.EmployeeService;
 
 import java.util.Collection;
 
-@RestController
+@RestController   //JSON FORMAT
 @RequestMapping("/employee")
 public class EmployeeController {
     private final EmployeeService employeeService;
@@ -28,7 +29,8 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public EmployeeResponse createEmployee(@RequestBody createRequestDto employee){
+    public EmployeeResponse createEmployee(@Valid
+                                               @RequestBody createRequestDto employee){
         return employeeService.addEmployee(employee);
     }
     @PutMapping("{employeeId}")

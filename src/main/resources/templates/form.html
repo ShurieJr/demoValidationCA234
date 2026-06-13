@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee MS</title>
+</head>
+<body>
+<div>
+    <h1>Register new Student</h1>
+    <form th:action="@{/emp/register}" th:object="${employee}" th:method="post">
+     <div>
+         <Label for="name">Name</Label>
+         <input th:field="*{name}" id="name" type="text" placeholder="Enter Employee name">
+         <p style="color:red"
+            th:if="${#fields.hasErrors('name')}"
+            th:errors="*{name}">
+
+         </p>
+     </div>
+        <div>
+            <Label for="email">Email</Label>
+            <input th:field="*{email}" id="email" type="email" placeholder="Enter Employee email">
+       <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red"></p>
+        </div>
+        <div>
+            <Label for="department">department</Label>
+            <input th:field="*{department}" id="department" type="text" placeholder="Enter Employee department">
+            <p th:if="${#fields.hasErrors('department')}" th:errors="*{department}" style="color:red"></p>
+        </div>
+
+        <div>
+            <Label for="salary">Salary</Label>
+            <input th:field="*{salary}" id="salary" type="number" placeholder="Enter Employee salary">
+            <p th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}" style="color:red"></p>
+
+        </div>
+        <div>
+            <Label for="nationalId">national ID</Label>
+            <input th:field="*{nationalId}" id="nationalId" type="text" placeholder="Enter Employee nationalId">
+            <p th:if="${#fields.hasErrors('nationalId')}" th:errors="*{nationalId}" style="color:red"></p>
+
+        </div>
+        <div>
+            <Label for="bankAccountNumber">bank Account Number</Label>
+            <input th:field="*{bankAccountNumber}" id="bankAccountNumber" type="text" placeholder="Enter Employee bankAccountNumber">
+            <p th:if="${#fields.hasErrors('bankAccountNumber')}"
+               th:errors="*{bankAccountNumber}" style="color:red"></p>
+
+        </div>
+        <div>
+            <Label for="performanceRating">Performance Rating</Label>
+            <input  th:field="*{performanceRating}" id="performanceRating" type="text" placeholder="Enter Employee performance Rating">
+            <p
+                    th:if="${#fields.hasErrors('performanceRating')}"
+                    th:errors="*{performanceRating}"
+                    style="color:red"></p>
+
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+</body>
+</html>

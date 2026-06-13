@@ -9,17 +9,21 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class EmployeeService {
     //storage
     private Map<String, Employee> employees = new ConcurrentHashMap<>();
+    private AtomicLong idGenerator = new AtomicLong();
 
     //operations
     public EmployeeResponse addEmployee(createRequestDto employeeRequest){
+        String empId = "EMP" + idGenerator.incrementAndGet() ;
+        System.out.println(empId);
         //convert dto to model (entity)
         Employee newEmployee = new Employee(
-                employeeRequest.getEmployeeId(),
+                empId,
                 employeeRequest.getName(),
                 employeeRequest.getEmail(),
                 employeeRequest.getDepartment(),
@@ -28,7 +32,8 @@ public class EmployeeService {
                 employeeRequest.getBankAccountNumber(),
                 employeeRequest.getPerformanceRating()
         );
-       return EmployeeResponse.from(employees.put(newEmployee.getEmployeeId(), newEmployee));
+        employees.put(newEmployee.getEmployeeId(), newEmployee);
+       return EmployeeResponse.from(newEmployee);
     }
     public EmployeeResponse getEmployee(String employeeId){
         return EmployeeResponse.from(employees.get(employeeId));

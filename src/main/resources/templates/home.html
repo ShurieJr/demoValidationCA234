@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee MS</title>
+</head>
+<body>
+<div>
+    <h1>Welcome to Employee management system</h1>
+<a th:href="@{/emp/form}">Add new Emp</a>
+    <h1>List of Employee</h1>
+<!--    Table-->
+    <table th:if="${not #lists.isEmpty(employee)}"
+            border="1px solid black">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>department</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="emp : ${employee}">
+            <td th:text="${emp.employeeId}"></td>
+            <td th:text="${emp.name}"></td>
+            <td th:text="${emp.email}"></td>
+            <td th:text="${emp.department}"></td>
+            <td>Edit
+            <form th:method="post"
+                  th:action="@{/emp/delete/{id}(id=${emp.employeeId})}">
+                <button type="submit" >❌</button>
+            </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p th:if="${#lists.isEmpty(employee)}"
+       style="color:red"> No Employee Yet!</p>
+</div>
+
+</body>
+</html>
