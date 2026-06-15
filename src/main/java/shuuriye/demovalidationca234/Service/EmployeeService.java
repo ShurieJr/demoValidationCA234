@@ -3,6 +3,7 @@ package shuuriye.demovalidationca234.Service;
 import org.springframework.stereotype.Service;
 import shuuriye.demovalidationca234.DTO.EmployeeResponse;
 import shuuriye.demovalidationca234.DTO.createRequestDto;
+import shuuriye.demovalidationca234.DTO.updateRequestDto;
 import shuuriye.demovalidationca234.Model.Employee;
 
 import java.util.Collection;
@@ -18,9 +19,9 @@ public class EmployeeService {
     private AtomicLong idGenerator = new AtomicLong();
 
     //operations
-    public EmployeeResponse addEmployee(createRequestDto employeeRequest){
+        public EmployeeResponse addEmployee(createRequestDto employeeRequest){
         String empId = "EMP" + idGenerator.incrementAndGet() ;
-        System.out.println(empId);
+
         //convert dto to model (entity)
         Employee newEmployee = new Employee(
                 empId,
@@ -45,8 +46,15 @@ public class EmployeeService {
     public Collection<EmployeeResponse> getAllEmployees(){
         return EmployeeResponse.from(employees.values());
     }
-    public void updateEmployee(String employeeId , Employee employee){
-        employees.put(employeeId, employee);
+    public void updateEmployee(updateRequestDto employeeRequest){
+            Employee updatedEmp = employees.get(employeeRequest.getEmployeeId());
+            //conversion dto -> entity
+
+            updatedEmp.setName(employeeRequest.getName());
+            updatedEmp.setEmail(employeeRequest.getEmail());
+            updatedEmp.setDepartment(employeeRequest.getDepartment());
+
+        employees.put(employeeRequest.getEmployeeId(), updatedEmp);
     }
 
 }

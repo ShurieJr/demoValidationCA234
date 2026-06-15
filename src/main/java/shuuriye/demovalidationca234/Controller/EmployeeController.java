@@ -33,8 +33,8 @@ public class EmployeeController {
                                                @RequestBody createRequestDto employee){
         return employeeService.addEmployee(employee);
     }
-    @PutMapping("{employeeId}")
-    public void updateEmployee(@PathVariable String employeeId ,  @RequestBody Employee employee){
-        employeeService.updateEmployee(employee.getEmployeeId(), employee);
-    }
+//    @PutMapping("{employeeId}")
+//    public void updateEmployee(@PathVariable String employeeId ,  @RequestBody Employee employee){
+//        employeeService.updateEmployee(employee.getEmployeeId(), employee);
+//    }
 }

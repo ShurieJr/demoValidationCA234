@@ -3,6 +3,7 @@ package shuuriye.demovalidationca234.Model;
 import lombok.*;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class Employee {   //model

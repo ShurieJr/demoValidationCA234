@@ -27,7 +27,8 @@
             <td th:text="${emp.name}"></td>
             <td th:text="${emp.email}"></td>
             <td th:text="${emp.department}"></td>
-            <td>Edit
+            <td>
+                <a th:href="@{/emp/edit/{id}(id=${emp.employeeId})}" >Edit</a>
             <form th:method="post"
                   th:action="@{/emp/delete/{id}(id=${emp.employeeId})}">
                 <button type="submit" >❌</button>
@@ -40,6 +41,8 @@
     <p th:if="${#lists.isEmpty(employee)}"
        style="color:red"> No Employee Yet!</p>
 </div>
+
+<footer th:replace="~{/fragments/footer :: footer}"> </footer>
 
 </body>
 </html>

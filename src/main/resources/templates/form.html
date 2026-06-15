@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>
-    <h1>Register new Student</h1>
+    <h1>Register new Employee</h1>
     <form th:action="@{/emp/register}" th:object="${employee}" th:method="post">
      <div>
          <Label for="name">Name</Label>
@@ -60,5 +60,7 @@
         <button type="submit">Register</button>
     </form>
 </div>
+
+<footer th:replace="~{/fragments/footer :: footer}"> </footer>
 </body>
 </html>
