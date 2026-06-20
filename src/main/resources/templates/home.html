@@ -28,7 +28,7 @@
             <td th:text="${emp.email}"></td>
             <td th:text="${emp.department}"></td>
             <td>
-                <a th:href="@{/emp/edit/{id}(id=${emp.employeeId})}" >Edit</a>
+                <a th:href="@{/emp/edit/{id}(id=${emp.employeeId})}" >📢</a>
             <form th:method="post"
                   th:action="@{/emp/delete/{id}(id=${emp.employeeId})}">
                 <button type="submit" >❌</button>
