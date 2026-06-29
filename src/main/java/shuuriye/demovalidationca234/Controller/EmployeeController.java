@@ -29,9 +29,9 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public EmployeeResponse createEmployee(@Valid
+    public void createEmployee(@Valid
                                                @RequestBody createRequestDto employee){
-        return employeeService.addEmployee(employee);
+         employeeService.addEmployee(employee);
     }
 //    @PutMapping("{employeeId}")
 //    public void updateEmployee(@PathVariable String employeeId ,  @RequestBody Employee employee){
